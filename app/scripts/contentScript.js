@@ -2,7 +2,7 @@ const viewer = document.createElement('div')
 viewer.className = 'twitter_danmaku_viewer'
 document.body.appendChild(viewer)
 
-const port = chrome.runtime.connect({name: "twitter_danmaku"});
+const port = chrome.runtime.connect({ name: 'twitter_danmaku' })
 
 const comments = []
 
@@ -10,7 +10,7 @@ port.onMessage.addListener(function(msg) {
   const commentEl = createEl('<h1>heyhey</h1>')
   viewer.appendChild(commentEl)
   comments.push(commentEl)
-});
+})
 
 setInterval(() => {
   comments.filter(hasGotOut).forEach(c => viewer.removeChild(c))
