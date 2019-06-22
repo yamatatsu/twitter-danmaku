@@ -1,9 +1,13 @@
-browser.runtime.onInstalled.addListener((details) => {
-  console.log('previousVersion', details.previousVersion)
-})
+const { onInstalled } = chrome.runtime
 
-browser.browserAction.setBadgeText({
-  text: `'Allo`
-})
+onInstalled.addListener(function() {
+  chrome.storage.sync.set({color: '#3aa757'}, function() {
+    console.log("The color is green.");
+  });
+});
 
-console.log(`'Allo 'Allo! Event Page for Browser Action`)
+chrome.runtime.onConnect.addListener(function(port) {
+  console.assert(port.name == "twitter_danmaku");
+  port.postMessage({question: "hey"})
+  // setInterval(() => port.postMessage({ tweets: ["hey", "yoyoyo"] }), 2000)
+});

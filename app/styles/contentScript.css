@@ -1,0 +1,29 @@
+.twitter_danmaku_viewer {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  white-space : nowrap;
+  cursor: default;
+  user-select: none;
+}
+
+.twitter_danmaku_viewer>.twitter_danmaku_comment {
+  position: absolute;
+  font-size: 24px;
+  line-height: 1;
+  z-index: 10000;
+  color: #fff;
+  text-shadow: -2px -2px #000, 2px -2px #000,	-2px 2px #000, 2px 2px #000;
+
+  animation-name: lane0;
+  animation-timing-function: linear;
+  animation-duration: 12s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes lane0 {
+  from{ transform: translate(100vw, 0); }
+  to{ transform: translate(-1280px, 0); }
+}
