@@ -6,14 +6,14 @@ const port = chrome.runtime.connect({ name: 'twitter_danmaku' })
 
 const comments = []
 
-port.onMessage.addListener(function(msg) {
+port.onMessage.addListener((msg) => {
   const commentEl = createEl('<h1>heyhey</h1>')
   viewer.appendChild(commentEl)
   comments.push(commentEl)
 })
 
 setInterval(() => {
-  comments.filter(hasGotOut).forEach(c => viewer.removeChild(c))
+  comments.filter(hasGotOut).forEach((c) => viewer.removeChild(c))
 }, 1000)
 
 ////////////////

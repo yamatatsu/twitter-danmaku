@@ -3,27 +3,27 @@ const wordInput = document.getElementById('word')
 const wordBox = document.getElementById('word_box')
 const testButton = document.getElementById('testButton')
 
-chrome.storage.sync.get('color', data => {
+chrome.storage.sync.get('color', (data) => {
   changeColor.style.backgroundColor = data.color
   changeColor.setAttribute('value', data.color)
 })
 
-chrome.storage.sync.get('word', data => {
+chrome.storage.sync.get('word', (data) => {
   wordBox.innerHTML = data.word
 })
 
-wordInput.onblur = el => {
+wordInput.onblur = (el) => {
   chrome.storage.sync.set({ word: el.target.value }, () => {
     wordBox.innerHTML = el.target.value
   })
-  chrome.runtime.sendMessage({ word: el.target.value }, function(response) {
+  chrome.runtime.sendMessage({ word: el.target.value }, (response) => {
     console.log(response.farewell)
   })
 }
 
-changeColor.onclick = element => {
+changeColor.onclick = (element) => {
   const color = element.target.value
-  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.executeScript(tabs[0].id, {
       file: 'scripts/contentScript.js',
     })
@@ -34,7 +34,7 @@ changeColor.onclick = element => {
   console.log('yahooo')
 }
 
-chrome.runtime.onConnect.addListener(function(port) {
+chrome.runtime.onConnect.addListener((port) => {
   console.assert(port.name == 'twitter_danmaku')
   testButton.onclick = () => {
     port.postMessage({ tweets: ['hey', 'yoyoyo'] })
