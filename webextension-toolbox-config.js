@@ -1,15 +1,9 @@
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   webpack: (config, { dev, vendor }) => {
-    config.plugins.push(
-      new webpack.EnvironmentPlugin([
-        'CONSUMER_KEY',
-        'CONSUMER_SECRET',
-        'ACCESS_TOKEN_KEY',
-        'ACCESS_TOKEN_SECRET',
-      ]),
-    )
+    config.plugins.push(new Dotenv())
 
     return config
   },
