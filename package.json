@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   "scripts": {
-    "dev": "webextension-toolbox dev",
-    "build": "webextension-toolbox build"
+    "dev": "dotenv webextension-toolbox dev",
+    "build": "dotenv webextension-toolbox build"
   },
   "devDependencies": {
+    "dotenv-cli": "^2.0.0",
     "prettier": "^1.18.2",
     "webextension-toolbox": "^3.0.0"
   },

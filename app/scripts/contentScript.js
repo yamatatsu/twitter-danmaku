@@ -7,6 +7,7 @@ const port = chrome.runtime.connect({ name: 'twitter_danmaku' })
 const comments = []
 
 port.onMessage.addListener((msg) => {
+  console.table(msg)
   const commentEl = createEl('<h1>heyhey</h1>')
   viewer.appendChild(commentEl)
   comments.push(commentEl)

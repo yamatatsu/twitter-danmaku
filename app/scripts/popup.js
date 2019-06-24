@@ -31,7 +31,6 @@ changeColor.onclick = (element) => {
       file: 'styles/contentScript.css',
     })
   })
-  console.log('yahooo')
 }
 
 chrome.runtime.onConnect.addListener((port) => {
