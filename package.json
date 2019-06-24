@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "yamatatsu <the.kinnikuman@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start-server": "lerna exec --scope=server yarn start",
+    "dev-build-extension": "lerna exec --scope=web-extension yarn dev chrome"
+  },
   "devDependencies": {
     "lerna": "^3.15.0",
     "prettier": "^1.18.2"

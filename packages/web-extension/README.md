@@ -1,29 +1,19 @@
 # chrome extention tweet danmaku
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
 ## Install
 
-	$ npm install
+    yarn
 
 ## Development
 
-    npm run dev chrome
-    npm run dev firefox
-    npm run dev opera
-    npm run dev edge
+    yarn dev chrome
+    yarn dev firefox
+    yarn dev opera
+    yarn dev edge
 
 ## Build
 
-    npm run build chrome
-    npm run build firefox
-    npm run build opera
-    npm run build edge
-
-## Environment
-
-The build tool also defines a variable named `process.env.NODE_ENV` in your scripts.
-
-## Docs
-
-* [webextension-toolbox](https://github.com/HaNdTriX/webextension-toolbox)
+    yarn build chrome
+    yarn build firefox
+    yarn build opera
+    yarn build edge
