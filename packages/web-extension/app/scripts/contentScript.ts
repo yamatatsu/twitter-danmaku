@@ -28,8 +28,9 @@ chrome.storage.sync.get('port', (data) => {
 
   webSocket.onmessage = (event) => {
     console.info('[twitter danmaku] get tweet. ', event.data)
-    const id: string = event.data.id
-    const text: string = event.data.text
+    const data = JSON.parse(event.data)
+    const id: string = data.id
+    const text: string = data.text
     dispatch({ type: 'commentFound', id, text })
   }
 })

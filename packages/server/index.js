@@ -22,7 +22,7 @@ async function main() {
     let cnt = 0
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(data)
+        client.send(JSON.stringify(data))
         cnt++
       }
     })
@@ -37,7 +37,7 @@ async function main() {
       if (!/javascript/i.test(event.text)) return
 
       const id = event.id.toString()
-      const text = event.text.replace('\n', '')
+      const text = event.text.replace(/\n/g, '')
 
       console.info(`get tweeet. "${text}"`)
       wss.broadcast({ text, id })
