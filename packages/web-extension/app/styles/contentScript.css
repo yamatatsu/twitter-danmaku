@@ -11,15 +11,14 @@
 
 .twitter_danmaku_viewer > .twitter_danmaku_comment {
   position: absolute;
-  font-size: 24px;
+  font-size: 36px;
   line-height: 1;
   z-index: 10000;
-  color: #fff;
-  text-shadow: -2px -2px #000, 2px -2px #000, -2px 2px #000, 2px 2px #000;
+  color: #333;
 
   animation-name: lane0;
   animation-timing-function: linear;
-  animation-duration: 12s;
+  animation-duration: 24s;
   animation-fill-mode: forwards;
 }
 
@@ -28,6 +27,6 @@
     transform: translate(100vw, 0);
   }
   to {
-    transform: translate(-1280px, 0);
+    transform: translate(-3000px, 0);
   }
 }
