@@ -37,7 +37,12 @@ chrome.storage.sync.get('port', (data) => {
 
 setInterval(() => dispatch({ type: 'interval' }), 1000)
 
-const port = chrome.runtime.connect({ name: 'twitter_danmaku' })
-port.onMessage.addListener((text: string) =>
-  dispatch({ type: 'commentFound', id: Date.now().toString(), text }),
-)
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.type === 'test') {
+  }
+  dispatch({
+    type: 'commentFound',
+    id: Date.now().toString(),
+    text: 'heyheyheyhey',
+  })
+})
