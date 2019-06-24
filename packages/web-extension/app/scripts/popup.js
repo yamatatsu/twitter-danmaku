@@ -1,16 +1,15 @@
 const portInput = document.getElementById('port')
+const fontColorInput = document.getElementById('fontColor')
+const fontSizeInput = document.getElementById('fontSize')
 const startButton = document.getElementById('start')
 const stopButton = document.getElementById('stop')
+const testButton = document.getElementById('test')
 
-chrome.storage.sync.get('port', (data) => {
-  if (data.port) portInput.value = data.port
-})
+syncToStorage(portInput, 'port')
+syncToStorage(fontColorInput, 'fontColor')
+syncToStorage(fontSizeInput, 'fontSize')
 
-portInput.onChange = (el) => {
-  chrome.storage.sync.set({ port: el.target.value })
-}
-
-startButton.onclick = (element) => {
+startButton.onclick = () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.executeScript(tabs[0].id, {
       file: 'scripts/contentScript.js',
@@ -19,4 +18,22 @@ startButton.onclick = (element) => {
       file: 'styles/contentScript.css',
     })
   })
+}
+
+chrome.runtime.onConnect.addListener((port) => {
+  console.assert(port.name == 'twitter_danmaku')
+
+  testButton.onclick = () => {
+    port.postMessage('heyheyheyheyhey')
+  }
+})
+
+function syncToStorage(input, key) {
+  chrome.storage.sync.get(key, (data) => {
+    if (data[key]) input.value = data[key]
+  })
+
+  input.onChange = (el) => {
+    chrome.storage.sync.set({ [key]: el.target.value })
+  }
 }

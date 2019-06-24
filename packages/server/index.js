@@ -36,10 +36,11 @@ async function main() {
       if (event.retweeted_status) return
       if (!/javascript/i.test(event.text)) return
 
+      const id = event.id.toString()
       const text = event.text.replace('\n', '')
 
       console.info(`get tweeet. "${text}"`)
-      wss.broadcast(text)
+      wss.broadcast({ text, id })
     })
 
     stream.on('error', (error) => {

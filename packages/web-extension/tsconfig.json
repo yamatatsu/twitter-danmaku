@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["dom", "es2017"],
+    "strict": true,
+    "noUnusedLocals": true,
+    // "moduleResolution": "node",
+    // "baseUrl": "./app",
+    "types": ["chrome"],
+    "esModuleInterop": true
+  }
+  // "include": ["app/**/*"]
+}
