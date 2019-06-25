@@ -8,7 +8,6 @@ type State = { styles: Styles; nextThread: number; comments: CommentType[] }
 export type Action =
   | { type: 'commentAdded'; comment: CommentType }
   | { type: 'commentGotOut'; id: string }
-  | { type: 'interval' }
   | { type: 'commentFound'; id: string; text: string }
   | { type: 'setStyle'; styles: Partial<Styles> }
 
