@@ -13,30 +13,15 @@ window.addEventListener('load', () => {
   syncToStorage(fontSizeInput, 'fontSize')
 
   startButton.onclick = () => {
-    // chrome.runtime.sendMessage({ type: 'start' })
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (!tabs[0] || !tabs[0].id) return
-      const tabId = tabs[0].id
-      const tabIdStr = tabId.toString()
-      chrome.storage.sync.get(tabIdStr, (data) => {
-        if (data[tabIdStr]) return
-        chrome.storage.sync.set({ [tabIdStr]: true }, () => {
-          chrome.tabs.executeScript(tabId, {
-            file: 'scripts/contentScript.js',
-          })
-          chrome.tabs.insertCSS(tabId, {
-            file: 'styles/contentScript.css',
-          })
-        })
-      })
-    })
+    chrome.runtime.sendMessage({ type: 'start' })
+  }
+
+  stopButton.onclick = () => {
+    chrome.runtime.sendMessage({ type: 'stop' })
   }
 
   testButton.onclick = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (!tabs[0] || !tabs[0].id) return
-      chrome.tabs.sendMessage(tabs[0].id, { type: 'test' })
-    })
+    chrome.runtime.sendMessage({ type: 'test' })
   }
 
   function syncToStorage(input: HTMLInputElement | null, key: string) {

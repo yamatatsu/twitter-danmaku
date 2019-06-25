@@ -1,31 +1,19 @@
 import { dispatch, Middleware, CommentType, Styles } from './reduxo'
 
-const viewer = document.createElement('div')
-viewer.className = 'twitter_danmaku_viewer'
-document.body.appendChild(viewer)
-
 export const middlewares: Middleware[] = [
   (getState, action) => (next) => {
     next()
     if (action.type !== 'commentAdded') return
-    flowComment(action.comment, getState().styles)
-  },
-  (getState, action) => (next) => {
-    next()
-    if (action.type !== 'interval') return
-    getState().comments.forEach(({ id }) => {
+
+    const { styles, comments } = getState()
+    flowComment(action.comment, styles)
+    comments.forEach(({ id }) => {
       const ele = document.getElementById(id)
       if (ele && hasGotOut(ele)) {
         dispatch({ type: 'commentGotOut', id })
+        document.body.removeChild(ele)
       }
     })
-  },
-  (getState, action) => (next) => {
-    next()
-    if (action.type !== 'commentGotOut') return
-    const ele = document.getElementById(action.id)
-    if (!ele) return
-    viewer.removeChild(ele)
   },
   (getState, action) => (next) => {
     next()
@@ -50,13 +38,13 @@ function flowComment(comment: CommentType, style: Styles) {
   ele.style.fontSize = fontSize || '36px'
   ele.style.top = `${(comment.thread - 1) * 36}px`
 
-  viewer.appendChild(ele)
+  document.body.appendChild(ele)
 }
 
 function findVacantThread(comments: CommentType[]) {
+  // thread は10本にしてみる
   for (let i = 1; i < 10; i++) {
     const threadComennts = comments.filter((c) => c.thread === i)
-    console.log(threadComennts)
     if (threadComennts.length === 0) return i
 
     const vacant = threadComennts
@@ -77,7 +65,5 @@ function hasGotOut(el: Element) {
 
 function hasDisplayedWhole(el: Element) {
   const rect = el.getBoundingClientRect()
-  console.log('rect.right', rect.right)
-  console.log('window.innerWidth', window.innerWidth)
   return rect.right < window.innerWidth
 }

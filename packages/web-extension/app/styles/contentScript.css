@@ -1,15 +1,4 @@
-.twitter_danmaku_viewer {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: default;
-  user-select: none;
-}
-
-.twitter_danmaku_viewer > .twitter_danmaku_comment {
+.twitter_danmaku_comment {
   position: absolute;
   font-size: 36px;
   line-height: 1;
@@ -18,7 +7,7 @@
 
   animation-name: lane0;
   animation-timing-function: linear;
-  animation-duration: 24s;
+  animation-duration: 20s;
   animation-fill-mode: forwards;
 }
 
