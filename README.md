@@ -1,10 +1,12 @@
 # twitter danmaku
 
+もうちょい真面目に書きたいって思ってはいる
+
 ## usage
 
 ### 1. add chrome extension
 
-`build-extension`
+`yarn dev-build-extension`
 
 and add extension to chrome.
 
