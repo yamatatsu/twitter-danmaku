@@ -1,4 +1,4 @@
-export type Styles = { fontColor: string; fontSize: string }
+export type Styles = { fontColor: string; fontSize: number }
 export type CommentType = {
   thread: number
   id: string
@@ -15,7 +15,7 @@ export type Action =
 let state: State = {
   styles: {
     fontColor: '#333',
-    fontSize: '36px',
+    fontSize: 36,
   },
   nextThread: 1,
   comments: [],

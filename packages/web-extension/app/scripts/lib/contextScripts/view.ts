@@ -34,9 +34,9 @@ function flowComment(comment: CommentType, style: Styles) {
   ele.id = comment.id
   ele.innerText = comment.text
   ele.className = 'twitter_danmaku_comment'
-  ele.style.color = fontColor || '#333'
-  ele.style.fontSize = fontSize || '36px'
-  ele.style.top = `${(comment.thread - 1) * 36}px`
+  ele.style.color = fontColor
+  ele.style.fontSize = `${fontSize}px`
+  ele.style.top = `${(comment.thread - 1) * fontSize}px`
 
   document.body.appendChild(ele)
 }

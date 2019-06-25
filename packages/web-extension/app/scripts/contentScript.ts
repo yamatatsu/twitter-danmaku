@@ -14,7 +14,7 @@ import { middlewares } from './lib/contextScripts/view'
     if (request.type === 'commentFound') {
       chrome.storage.sync.get(['fontColor', 'fontSize'], (data) => {
         const fontColor: string = data.fontColor
-        const fontSize: string = data.fontSize
+        const fontSize: number = data.fontSize
         dispatch({ type: 'setStyle', styles: { fontColor, fontSize } })
         dispatch(request)
       })
