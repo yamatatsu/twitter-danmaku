@@ -10,7 +10,7 @@
     "express": "^4.17.1",
     "inquirer": "^6.4.1",
     "twitter": "^1.7.1",
-    "ws": "^7.0.1"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "dotenv-cli": "^2.0.0"
